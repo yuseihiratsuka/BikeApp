@@ -66,16 +66,30 @@ class _BasePageState extends State<BasePage> {
       length: 3,
       child: Scaffold(
         backgroundColor: Colors.black26,
-        appBar: AppBar(
-          backgroundColor: Colors.black12,
-          bottom: const TabBar(
-            tabs: <Widget>[
-              Tab(text: '参加予定'),
-              Tab(text: '募集一覧'),
-              Tab(text: 'おすすめスポット'),
-            ],
-          ),
-        ),
+        floatingActionButton: _selectedIndex == 0
+            ? FloatingActionButton(
+                child: Icon(
+                  Icons.edit,
+                  color: Colors.white,
+                ),
+                backgroundColor: Colors.greenAccent[400],
+                onPressed: () {},
+              )
+            : null,
+        appBar: _selectedIndex == 0
+            ? AppBar(
+                backgroundColor: Colors.black12,
+                bottom: const TabBar(
+                  tabs: <Widget>[
+                    Tab(text: '参加予定'),
+                    Tab(text: '募集一覧'),
+                    Tab(text: 'おすすめスポット'),
+                  ],
+                ),
+              )
+            : AppBar(
+                backgroundColor: Colors.black12,
+              ),
         body: _pages[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.black,
